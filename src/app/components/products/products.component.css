@@ -9,9 +9,9 @@
   color: #b074d1;
 }
 .products{
-
+  margin-bottom: 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);;
+  grid-template-columns: repeat(auto-fit, 300px);
   gap: 2rem;
   justify-content: center;
 }

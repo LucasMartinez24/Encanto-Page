@@ -1,6 +1,6 @@
 <nav [class.sticky]="stickyHeader">
   <a href="#" class="logo"><img src="../assets/img/nav.png" alt=""></a>
-  <ul class="navMenu">
+  <ul class="navMenu" #navmenu>
     <li><a href="#">Inicio</a></li>
     <li><a href="#">Shop</a></li>
     <li><a href="#">Productos</a></li>
@@ -9,6 +9,6 @@
     <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
     <a href="#"><i class="fa-regular fa-user"></i></a>
     <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-    <div class="fa-solid fa-bars" id="menu-icon"></div>
+    <button id="menu-icon" #menuIcon (click)="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
   </div>
 </nav>

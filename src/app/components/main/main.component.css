@@ -71,3 +71,17 @@ svg{
   transition: all .42s ease;
   border: 2px solid #b074d1;
 }
+@media(max-width:630px){
+  .text h1{
+    font-size: 50px;
+    transition: .4s;
+  }
+  .text p{
+    font-size: 18px;
+    transition: .4s;
+  }
+  .main-btn{
+    padding: 10px 20px;
+    transition: .4s;
+  }
+}
