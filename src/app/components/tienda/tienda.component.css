@@ -1,0 +1,88 @@
+section{
+  margin-top: 50px;
+  padding: 5% 10%;
+}
+.main-home{
+  width: 100%;
+  height: 50vh;
+  background-image: url(/assets/img/mercado.jpg);
+  background-position: center;
+  background-size: 55vh;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  align-items: center;
+}
+.text h5{
+  color: #b074d1;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.text h1{
+  color: #000;
+  font-size: 65px;
+  text-transform: capitalize;
+  line-height: 1.1;
+  font-weight: 600;
+  margin: 6px 0 10px;
+}
+.text p{
+  color: #333c56;
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.main-btn{
+  display: inline-block;
+  color: #111;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  border: 2px solid #111;
+  padding: 12px 25px;
+  transition: all .42s ease;
+}
+svg{
+  transition: all .5s;
+}
+.main-btn:hover{
+  background-color: #c6dffd;
+}
+.main-btn:hover svg{
+  margin-left: 4px;
+  margin-right: -4px;
+}
+.down-arrow{
+  position: absolute;
+  top: 85%;
+  right: 8%;
+}
+.down svg{
+  font-size: 30px;
+  color: #2c2c2c;
+  border: 2px solid #2c2c2c;
+  border-radius: 50%;
+  padding: 10px 15px;
+
+}
+.down svg:hover{
+  background-color: #b074d1;
+  color: white;
+  transition: all .42s ease;
+  border: 2px solid #b074d1;
+}
+@media(max-width:630px){
+  .text h1{
+    font-size: 50px;
+    transition: .4s;
+  }
+  .text p{
+    font-size: 18px;
+    transition: .4s;
+  }
+  .main-btn{
+    padding: 10px 20px;
+    transition: .4s;
+  }
+}
