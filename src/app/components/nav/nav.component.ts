@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
+  stickyHeader = false;
 
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.stickyHeader = window.scrollY > 0;
+  }
 }
