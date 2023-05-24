@@ -23,6 +23,7 @@
   width: 100%;
   height: auto;
   transition: all .40s;
+  cursor: pointer;
 }
 .row img:hover{
   transform: scale(0.9);

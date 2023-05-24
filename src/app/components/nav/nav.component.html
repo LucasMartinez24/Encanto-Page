@@ -2,13 +2,12 @@
   <a href="#" class="logo"><img src="../assets/img/nav.png" alt=""></a>
   <ul class="navMenu" #navmenu>
     <li><a routerLink="/inicio">Inicio</a></li>
-    <li><a routerLink="/shop">Shop</a></li>
-    <li><a href="#">Productos</a></li>
+    <li><a routerLink="/shop">Productos</a></li>
   </ul>
   <div class="nav-icons">
-    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
     <a href="#"><i class="fa-regular fa-user"></i></a>
-    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+    <a routerLink="/carrito"><i class="fa-solid fa-cart-shopping"></i></a>
+    <a routerLink="/login" class="login">LOGIN</a>
     <button id="menu-icon" #menuIcon (click)="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
   </div>
 </nav>
