@@ -1,18 +1,39 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   @ViewChild('signinBtn') signinBtn!: ElementRef;
   @ViewChild('signupBtn') signupBtn!: ElementRef;
   @ViewChild('formBx') formBx!: ElementRef;
   @ViewChild('body') body!: ElementRef;
+  emailLogin:string=""
+  passwordLogin:string=""
+  email:string="";
+  password:string="";
+  constructor(private renderer: Renderer2, private userService:AuthService,private router:Router) {
+  }
+  ngOnInit(): void {
 
-  constructor(private renderer: Renderer2) {}
-
+  }
+  onSubmitRegister(){
+    this.userService.register(this.email,this.password)
+    .then(resp=>{
+      console.log(resp)
+    }).catch(error=>console.log(error))
+  }
+  onSubmitLogin(){
+    this.userService.loginEmailUser(this.emailLogin,this.passwordLogin).then(resp=>{
+      console.log(resp)
+      this.router.navigateByUrl('/inicio')
+    }).catch(error=>console.log(error))
+  }
   ngAfterViewInit() {
     this.renderer.listen(this.signupBtn.nativeElement, 'click', () => {
       this.formBx.nativeElement.classList.add('active');
