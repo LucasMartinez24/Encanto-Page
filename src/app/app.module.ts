@@ -13,11 +13,14 @@ import { ProductoCompraComponent } from './components/producto-compra/producto-c
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormComponent } from './components/form/form.component';
-import { environment } from 'src/environments/enviroments';
-import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,15 +33,17 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     ProductoCompraComponent,
     CarritoComponent,
     LoginComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    AngularFireAuthModule
+    provideAuth(() => getAuth()),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

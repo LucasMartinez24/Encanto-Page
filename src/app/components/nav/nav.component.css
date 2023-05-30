@@ -92,6 +92,9 @@ nav.sticky{
     display: block;
   }
 }
+.login{
+  cursor: pointer;
+}
 .login::after{
   content: "";
   display: block;

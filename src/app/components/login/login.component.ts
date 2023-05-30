@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -22,6 +21,7 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
 
   }
+
   onSubmitRegister(){
     this.userService.register(this.email,this.password)
     .then(resp=>{
@@ -30,6 +30,12 @@ export class LoginComponent implements OnInit{
   }
   onSubmitLogin(){
     this.userService.loginEmailUser(this.emailLogin,this.passwordLogin).then(resp=>{
+      console.log(resp)
+      this.router.navigateByUrl('/inicio')
+    }).catch(error=>console.log(error))
+  }
+  Google(){
+    this.userService.loginGoogleUser().then(resp=>{
       console.log(resp)
       this.router.navigateByUrl('/inicio')
     }).catch(error=>console.log(error))

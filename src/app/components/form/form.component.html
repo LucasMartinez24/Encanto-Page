@@ -1,0 +1,30 @@
+<div>Valores del form: {{Form.value | json}}</div>
+<section>
+  <div class="container">
+    <h2>Productos</h2>
+    <form class="form" #Form="ngForm">
+      <input type="hidden" value="{{producto.id}}">
+      <div class="input-box">
+        <label>Nombre:</label>
+        <input type="text" placeholder="Ingrese el nombre del producto" id="nombre" required name="nombre" #nombre="ngModel" [(ngModel)]="producto.nombre">
+      </div>
+      <div class="input-box">
+        <label>Descripcion:</label>
+        <input type="text" placeholder="Ingrese una descripcion del producto" id="descripcion" required  name="descripcion" [(ngModel)]="producto.descripcion" #descripcion="ngModel">
+      </div>
+      <div class="input-box">
+        <label>precio:</label>
+        <input type="number" placeholder="Ingrese el precio:" id="precio" required  name="precio" [(ngModel)]="producto.precio" #precio="ngModel">
+      </div>
+      <div class="input-box">
+        <label>Cantidad disponible:</label>
+        <input type="number" placeholder="Ingrese la cantidad disponible:" id="cantidad" required  name="cantidad" [(ngModel)]="producto.cantidad" #cantidad="ngModel">
+      </div>
+      <div class="input-box">
+        <label>Imagen:</label>
+        <input type="file" (change)="upload($event)" accept=".png,.jpg" placeholder="Ingrese un url de imagen" name="imagen" id="img" required>
+      </div>
+      <button  type="submit">Enviar</button>
+    </form>
+  </div>
+</section>

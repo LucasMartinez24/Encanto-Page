@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,7 +13,21 @@ export class NavComponent implements OnInit{
   stickyHeader = false;
   public isLogged:boolean=false
   ngOnInit(): void {
-
+    this.getCurrentUser()
+  }
+  getCurrentUser(){
+    // this.auth.isAuth().subscribe(auth=>{
+    //   if(auth){
+    //     console.log("user logged")
+    //     this.isLogged=true
+    //   }else{
+    //     console.log("user not logged")
+    //     this.isLogged=false
+    //   }
+    // })
+  }
+  logOut(){
+    this.auth.logoutUser()
   }
   //NAVBAR
   @HostListener('window:scroll', [])
@@ -22,14 +37,12 @@ export class NavComponent implements OnInit{
   @ViewChild('menuIcon') menuIcon!: ElementRef;
   @ViewChild('navmenu') navmenu!: ElementRef;
   private routerSubscription: Subscription;
-  constructor(private router: Router,private auth:AuthService) {
+  constructor(private afsAuth:AngularFireAuth,private router: Router,private auth:AuthService) {
     this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.resetClasses();
       }
     });
-  }
-  logOut(){
   }
 
   ngOnDestroy() {
