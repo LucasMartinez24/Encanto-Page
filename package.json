@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
+    "boxicons": "^2.1.4",
     "firebase": "^9.22.0",
     "firebaseui": "^6.0.2",
     "firebaseui-angular": "^6.1.3",

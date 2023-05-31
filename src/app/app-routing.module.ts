@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:"admin/formulario/:id",component:FormComponent},
   {path:"carrito",component:CarritoComponent},
   {path:"login",component:LoginComponent},
-  {path:"formulario",component:FormComponent},
+  {path:"formulario/:id",component:FormComponent},
   {path:"**",redirectTo:"inicio"}
 ];
 

@@ -16,15 +16,15 @@ export class NavComponent implements OnInit{
     this.getCurrentUser()
   }
   getCurrentUser(){
-    // this.auth.isAuth().subscribe(auth=>{
-    //   if(auth){
-    //     console.log("user logged")
-    //     this.isLogged=true
-    //   }else{
-    //     console.log("user not logged")
-    //     this.isLogged=false
-    //   }
-    // })
+    this.auth.isAuth().subscribe(auth=>{
+      if(auth){
+        console.log("user logged")
+        this.isLogged=true
+      }else{
+        console.log("user not logged")
+        this.isLogged=false
+      }
+    })
   }
   logOut(){
     this.auth.logoutUser()

@@ -95,3 +95,99 @@ input.enviar{
   opacity: 0;
   cursor: pointer;
 }
+.imagen{
+  margin-top: 20px;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+.button{
+  cursor: pointer;
+  position: relative;
+  margin-top: 20px;
+  height: 50px;
+  width: 250px;
+  background: #b074d1;
+  border-radius: 55px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.button::before{
+  content: "";
+  position:absolute;
+  height: 100%;
+  width: 100%;
+  background: #9c3dcf;
+  top: 0;
+  left: -100%;
+  border-radius: 55px;
+}
+.button.active{
+  height: 20px;
+  width: 360px;
+}
+.button.active .cont{
+  transform: translateY(25px);
+}
+
+.button.active::before{
+  animation: layer 6s ease-in-out forwards;
+}
+@keyframes layer{
+  100%{
+    left: 0%;
+  }
+}
+.button .cont{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  transition-delay: 0.2s;
+}
+.cont i,.cont .button-text{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  transition: all 0.5s ease;
+}
+.cont .button-text{
+  font-size: 16px;
+  margin-left: 8px;
+  transition: all 0.5s ease;
+}
+.form .input-box{
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label{
+  color: #333;
+}
+.form .select-box{
+  margin-top: 20px;
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+p{
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.select-box select{
+
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}

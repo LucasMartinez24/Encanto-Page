@@ -20,11 +20,33 @@
         <label>Cantidad disponible:</label>
         <input type="number" placeholder="Ingrese la cantidad disponible:" id="cantidad" required  name="cantidad" [(ngModel)]="producto.cantidad" #cantidad="ngModel">
       </div>
-      <div class="input-box">
-        <label>Imagen:</label>
-        <input type="file" (change)="upload($event)" accept=".png,.jpg" placeholder="Ingrese un url de imagen" name="imagen" id="img" required>
+      <div class="select-box">
+        <label for="disponibilidad">Disponibilidad:</label>
+        <select name="disponibilidad" id="disponibilidad" required [(ngModel)]="producto.disponibilidad" #disponibilidad="ngModel">
+          <option value="1">Si</option>
+          <option value="0">No</option>
+        </select>
       </div>
-      <button  type="submit">Enviar</button>
+      <div class="select-box">
+        <label for="Oferta">Es una Oferta:</label>
+        <select name="oferta" id="oferta" required [(ngModel)]="producto.oferta" #oferta="ngModel">
+          <option value="1">Si</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+      <div class="imagen">
+        <div>
+          <label>Imagen:</label>
+          <input type="file" (change)="upload($event)" accept=".png,.jpg" placeholder="Ingrese un url de imagen" name="imagen" id="img" required>
+        </div>
+        <div class="button" #button (click)="uploadImg()">
+          <div class="cont">
+            <i class='bx bx-cloud-upload'></i>
+            <span class="button-text">Cargar img</span>
+          </div>
+        </div>
+      </div>
+      <button type="submit" (click)="onSubmit()">Enviar</button>
     </form>
   </div>
 </section>

@@ -6,6 +6,7 @@ export const environment={
     apiKey: 'AIzaSyAmgrjXoJkJl-ukeHJO5gS0i-TWR5f_-iI',
     authDomain: 'encanto-c2fef.firebaseapp.com',
     messagingSenderId: '875741320238',
+    ignoreUndefinedProperties: true,
   },
   production:false,
 

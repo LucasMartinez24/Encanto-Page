@@ -4,7 +4,7 @@
   </div>
   <div class="products">
     <div class="row"*ngFor="let item of productos">
-      <img src="../assets/img/muestra.jpg" alt="muestra" routerLink="/compra/{{item.id}}">
+      <img [src]="item.imagen" alt="muestra" routerLink="/compra/{{item.id}}">
       <div class="product-text">
         <h5>Oferta</h5>
       </div>

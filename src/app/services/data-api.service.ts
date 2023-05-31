@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { productoInterface } from '../model/producto';
-import { Firestore,collection,addDoc, collectionData, collectionChanges} from '@angular/fire/firestore';
+import { Firestore,collection,addDoc, collectionData, collectionChanges, getDoc} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { deleteDoc, doc, updateDoc} from 'firebase/firestore';
 @Injectable({
@@ -9,11 +9,7 @@ import { deleteDoc, doc, updateDoc} from 'firebase/firestore';
 export class DataApiService {
 
   constructor(private firestore:Firestore) {
-    // this.productosCollection=data.collection<productoInterface>("productos")
-    // this.productos=this.productosCollection.valueChanges()
   }
-  // private productosCollection:AngularFirestoreCollection<productoInterface>;
-  // private productos: Observable<productoInterface[]>;
   getTodosLosProductos():Observable<productoInterface[]>{
     const producRef=collection(this.firestore,'productos');
     return collectionData(producRef,{idField:'id'}) as Observable<productoInterface[]>
@@ -21,6 +17,10 @@ export class DataApiService {
   agregarProducto(producto:productoInterface){
     const producRef=collection(this.firestore,'productos');
     return addDoc(producRef,producto);
+  }
+  getProducto(id:string){
+    const productRef=doc(this.firestore,`productos/${id}`)
+    return productRef
   }
   actualizarProducto(producto:productoInterface){
     const productRef=doc(this.firestore,`productos/${producto.id}`)
