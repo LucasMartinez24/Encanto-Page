@@ -27,6 +27,7 @@ export class NavComponent implements OnInit {
   }
   logOut() {
     this.auth.logoutUser();
+    this.router.navigateByUrl('/inicio')
   }
   //NAVBAR
   @HostListener('window:scroll', [])
