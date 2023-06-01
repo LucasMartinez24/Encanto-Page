@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "encanto-c2fef"
+  },
+  "targets": {
+    "encanto-c2fef": {
+      "hosting": {
+        "Encanto-Page": [
+          "encanto370accesorios"
+        ]
+      }
+    }
   }
 }

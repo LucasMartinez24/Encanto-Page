@@ -95,6 +95,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Encanto-Page:build:production",
+            "firebaseProject": "encanto-c2fef",
+            "firebaseHostingSite": "encanto370accesorios"
+          }
         }
       }
     }
