@@ -15,7 +15,7 @@
         <input class="label" type="number" [ngModel]="cantidad" min="1" [max]="aux" disabled>
         <span class="span" (click)="incrementarCantidad()">+</span>
       </div>
-      <button>Agregar al carrito</button>
+      <button (click)="addCart()">Agregar al carrito</button>
     </div>
   </div>
 </section>

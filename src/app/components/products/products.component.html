@@ -4,9 +4,13 @@
   </div>
   <div class="products">
     <div class="row"*ngFor="let item of productos">
-      <img [src]="item.imagen" alt="muestra" routerLink="/compra/{{item.id}}">
+      <img [src]="item.imagen" alt="muestra" routerLink="/compra/{{item.id}}" *ngIf="item.disponibilidad==true">
+      <img [src]="item.imagen" alt="muestra" *ngIf="item.disponibilidad==false">
       <div class="product-text">
         <h5>Oferta</h5>
+      </div>
+      <div class="disponibilidad" *ngIf="item.disponibilidad==false">
+        <h5>Agotado</h5>
       </div>
       <div class="ratting">
         <i class="fa-solid fa-star"></i>

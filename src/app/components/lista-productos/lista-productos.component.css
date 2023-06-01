@@ -1,0 +1,136 @@
+.table{
+  margin-top: 150px;
+  width: 100%;
+  margin-bottom: 197px;
+}
+.table-section{
+  overflow: auto;
+}
+table{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse:collapse ;
+}
+thead th{
+  position: sticky;
+  top: 0;
+  background-color: #f6f9fc;
+  color: #8493a5;
+  font-size: 15px;
+}
+th,td{
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 20px;
+  text-align: center;
+}
+td img{
+  height: 60px;
+  object-fit: cover;
+  border:1px solid #ced0d2
+}
+tr:hover td{
+  color: #b074d1;
+  background-color: #f6f9fc;
+}
+button{
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px;
+  color: #fff;
+  margin-left: 20px;
+  margin-bottom: 2px;
+}
+td button:nth-child(1){
+  background-color: #b074d1;
+}
+td button:nth-child(2){
+  background-color: red;
+}
+.modal{
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111111bd;
+  display: flex;
+}
+.modal_container{
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 3em 2.5em;
+  display: grid;
+  gap: 1em;
+  place-items: center;
+  grid-auto-columns: 100%;
+}
+.modal_titulo{
+  font-size: 2.5rem;
+}
+.cerrar{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  height: 30px;
+  width: 30px;
+  margin-top: -100px;
+  margin-right: -600px;
+  border: 0 solid;
+  border-radius: 100%;
+  background-color: #ff3c78;
+  transition: 0.5s;
+}
+.cerrar fa-icon{
+  cursor: pointer;
+}
+.cerrar:hover{
+  color: black;
+}
+.botones{
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.agregar{
+  cursor: pointer;
+  margin-bottom: 30px;
+  background-color: #b074d1;
+}
+.si{
+  background-color: #b074d1;
+  border: none;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no{
+  background-color: red;
+  border: none;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media(max-width:890px){
+  .modal_container{
+    margin-top: 100px;
+    max-height: 80%;
+    padding: 50px 50px;
+  }
+}
+@media (max-width:750px) {
+  .cerrar{
+    margin-right: -98%;
+  }
+}

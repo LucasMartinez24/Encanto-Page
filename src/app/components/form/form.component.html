@@ -46,10 +46,10 @@
           </div>
         </div>
       </div>
-      <p>imagen:</p>
+      <p *ngIf="accion=='update'">imagen:</p>
       <img *ngIf="accion=='update'" [src]="producto.imagen" alt="imagen" height="150px">
-      <button *ngIf="accion=='new'" type="submit" (click)="onSubmit()">Enviar</button>
-      <button *ngIf="accion=='update'" type="submit" (click)="modificar()">Modificar</button>
+      <button *ngIf="accion=='new' && image && Form.invalid==false" type="submit" (click)="onSubmit()">Enviar</button>
+      <button *ngIf="accion=='update'" [disabled]="Form.invalid" type="submit" (click)="modificar()">Modificar</button>
     </form>
   </div>
 </section>

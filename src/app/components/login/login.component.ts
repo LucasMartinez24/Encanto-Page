@@ -24,19 +24,14 @@ export class LoginComponent implements OnInit{
 
   onSubmitRegister(){
     this.userService.register(this.email,this.password)
-    .then(resp=>{
-      console.log(resp)
-    }).catch(error=>console.log(error))
   }
   onSubmitLogin(){
     this.userService.loginEmailUser(this.emailLogin,this.passwordLogin).then(resp=>{
-      console.log(resp)
       this.router.navigateByUrl('/inicio')
     }).catch(error=>console.log(error))
   }
   Google(){
     this.userService.loginGoogleUser().then(resp=>{
-      console.log(resp)
       this.router.navigateByUrl('/inicio')
     }).catch(error=>console.log(error))
   }

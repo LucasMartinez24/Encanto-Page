@@ -8,3 +8,7 @@ export interface productoInterface{
   disponibilidad?:boolean
   oferta?:boolean
 }
+export interface CartItem {
+  product: productoInterface;
+  quantity: number;
+}

@@ -21,7 +21,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage'
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ListaProductosComponent } from './components/lista-productos/lista-productos.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage'
     CarritoComponent,
     LoginComponent,
     FormComponent,
+    ListaProductosComponent,
   ],
   imports: [
     BrowserModule,

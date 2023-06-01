@@ -5,10 +5,10 @@
     <li><a routerLink="/shop">Productos</a></li>
   </ul>
   <div class="nav-icons">
-    <a href="#" *ngIf="isLogged"><i class="fa-regular fa-user"></i></a>
+    <a routerLink="/lista" *ngIf="isLogged"><i class="fa-regular fa-user"></i></a>
     <a routerLink="/carrito" *ngIf="isLogged"><i class="fa-solid fa-cart-shopping"></i></a>
     <a routerLink="/login" class="login" *ngIf="!isLogged">LOGIN</a>
     <a (click)="logOut()" class="login" *ngIf="isLogged">LogOut</a>
-    <button id="menu-icon" #menuIcon (click)="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    <button id="menu-icon" class="menu-icon" #menuIcon (click)="toggleMenu()"><i class='bx bx-menu'></i></button>
   </div>
 </nav>

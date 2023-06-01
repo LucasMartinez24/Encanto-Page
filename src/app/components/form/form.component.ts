@@ -15,6 +15,7 @@ export class FormComponent implements OnInit{
   uploadPercent!:Observable<number | undefined>
   urlImage!:Observable<string>
   accion:string=""
+  image:boolean=false
   @ViewChild('button') button!: ElementRef;
   constructor(private img:AngularFireStorage,private data:DataApiService,private router:Router,private activatedRoute:ActivatedRoute){
 
@@ -29,6 +30,7 @@ export class FormComponent implements OnInit{
       this.getProducto(params['id']);
     }
   });
+  this.image=false
   }
   getProducto(id:string){
    this.data.getProducto(id).subscribe(resp=>{
@@ -38,7 +40,6 @@ export class FormComponent implements OnInit{
   }
   upload($event:any){
     this.path=$event.target.files[0]
-    console.log(this.path)
   }
   uploadImg() {
     const id = Math.random().toString(36).substring(2);
@@ -53,7 +54,6 @@ export class FormComponent implements OnInit{
     this.button.nativeElement.classList.add('active');
 
     this.uploadPercent.subscribe(percent => {
-      console.log(percent);
       if (percent !== undefined) {
         setTimeout(() => {
           this.button.nativeElement.classList.remove('active');
@@ -63,20 +63,19 @@ export class FormComponent implements OnInit{
             iconElement.classList.replace('bx-cloud-upload','bx-check-circle');
             buttonTextElement.textContent = 'Imagen Subida';
           }
-        }, 6000);
+        }, 3000);
       }
     });
+    this.image=true
   }
   onSubmit() {
     this.urlImage.pipe(
       take(1),
       switchMap(url => {
         this.producto.imagen = url;
-        console.log(this.producto);
         return this.data.agregarProducto(this.producto);
       })
     ).subscribe(resp => {
-      console.log(resp);
       this.router.navigate(['inicio']);
     });
   }
