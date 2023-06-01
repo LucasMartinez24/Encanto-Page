@@ -21,20 +21,20 @@ export class FormComponent implements OnInit{
   }
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      if (params['dni'] == "0"){
+      if (params['id'] == "0"){
 
       this.accion = "new";
     }else {
       this.accion = "update";
-      this.getProducto(params['dni']);
+      this.getProducto(params['id']);
     }
   });
   }
   getProducto(id:string){
-  //  this.data.getProducto(id).subscribe(resp=>{
-  //   console.log(resp);
-
-  //  })
+   this.data.getProducto(id).subscribe(resp=>{
+    this.producto=resp[0]
+    this.producto.id=id
+   })
   }
   upload($event:any){
     this.path=$event.target.files[0]
@@ -77,6 +77,13 @@ export class FormComponent implements OnInit{
       })
     ).subscribe(resp => {
       console.log(resp);
+      this.router.navigate(['inicio']);
     });
+  }
+  modificar(){
+    this.data.actualizarProducto(this.producto).then(resp=>{
+      console.log("actualizacion exitosa");
+      this.router.navigate(['inicio']);
+    })
   }
 }

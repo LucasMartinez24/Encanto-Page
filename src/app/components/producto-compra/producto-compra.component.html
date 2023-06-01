@@ -2,18 +2,18 @@
   <div class="container flex">
     <div class="left">
       <div class="main-image">
-        <img src="../assets/img/muestra2.webp" alt="">
+        <img [src]="producto.imagen" alt="imagen">
       </div>
     </div>
     <div class="right">
-      <h3>Collar para compartir</h3>
-      <h4><small>$</small>500.00</h4>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, corrupti.</p>
+      <h3>{{producto.nombre}}</h3>
+      <h4>{{producto.precio | currency}}</h4>
+      <p>{{producto.descripcion}}</p>
       <h5>Cantidad</h5>
       <div class="add flex1">
-        <span>-</span>
-        <label>1</label>
-        <span>+</span>
+        <span class="span" (click)="decrementarCantidad()">-</span>
+        <input class="label" type="number" [ngModel]="cantidad" min="1" [max]="aux" disabled>
+        <span class="span" (click)="incrementarCantidad()">+</span>
       </div>
       <button>Agregar al carrito</button>
     </div>

@@ -14,11 +14,11 @@ export class ProductsComponent implements OnInit{
   }
   ngOnInit(): void {
     this.dataApi.getTodosLosProductos().subscribe(resp=>{
+      this.productos=[]
       for(let i=0;i<resp.length;i++){
-        if(resp[i].oferta==true){
+        if(resp[i].oferta==true && resp[i].disponibilidad==true){
           this.productos.push(resp[i])
           console.log(this.productos[0]);
-
         }
       }
     })

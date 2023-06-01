@@ -8,9 +8,6 @@
       <div class="product-text">
         <h5>Oferta</h5>
       </div>
-      <div class="heart-icon">
-        <i class="fa-regular fa-heart"></i>
-      </div>
       <div class="ratting">
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
@@ -23,5 +20,6 @@
         <p>{{item.precio|currency}}</p>
       </div>
     </div>
+    <div style="margin: auto;" *ngIf="productos.length==0">No hay Ofertas</div>
   </div>
 </section>

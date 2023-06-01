@@ -1,9 +1,9 @@
-<div>Valores del form: {{Form.value | json}}</div>
+
 <section>
   <div class="container">
     <h2>Productos</h2>
     <form class="form" #Form="ngForm">
-      <input type="hidden" value="{{producto.id}}">
+      <input *ngIf="accion=='update'" required name="id" id="id" #id="ngModel" type="hidden" value="{{producto.id}}" [(ngModel)]="producto.id">
       <div class="input-box">
         <label>Nombre:</label>
         <input type="text" placeholder="Ingrese el nombre del producto" id="nombre" required name="nombre" #nombre="ngModel" [(ngModel)]="producto.nombre">
@@ -34,7 +34,7 @@
           <option value="0">No</option>
         </select>
       </div>
-      <div class="imagen">
+      <div class="imagen" *ngIf="accion=='new'">
         <div>
           <label>Imagen:</label>
           <input type="file" (change)="upload($event)" accept=".png,.jpg" placeholder="Ingrese un url de imagen" name="imagen" id="img" required>
@@ -46,7 +46,10 @@
           </div>
         </div>
       </div>
-      <button type="submit" (click)="onSubmit()">Enviar</button>
+      <p>imagen:</p>
+      <img *ngIf="accion=='update'" [src]="producto.imagen" alt="imagen" height="150px">
+      <button *ngIf="accion=='new'" type="submit" (click)="onSubmit()">Enviar</button>
+      <button *ngIf="accion=='update'" type="submit" (click)="modificar()">Modificar</button>
     </form>
   </div>
 </section>
