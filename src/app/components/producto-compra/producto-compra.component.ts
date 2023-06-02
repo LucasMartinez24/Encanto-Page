@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { productoInterface } from 'src/app/model/producto';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { DataApiService } from 'src/app/services/data-api.service';
 
@@ -12,13 +13,13 @@ import { DataApiService } from 'src/app/services/data-api.service';
 export class ProductoCompraComponent implements OnInit {
   producto:productoInterface={}
   accion: string = ""
-  constructor(private cart:CartService,private data:DataApiService,private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private auth:AuthService,private cart:CartService,private data:DataApiService,private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
   ngOnInit(): void {
+    this.getCurrentUser()
     this.activatedRoute.params.subscribe(params => {
       if (params['id'] == "0") {
-
         this.accion = "new";
       } else {
         this.accion = "update";
@@ -49,5 +50,20 @@ export class ProductoCompraComponent implements OnInit {
   }
   addCart(){
     this.cart.addToCart(this.producto,this.cantidad)
+    this.router.navigateByUrl('/carrito')
+  }
+  public isLogged: boolean = false;
+  getCurrentUser() {
+    this.auth.isAuth().subscribe((auth) => {
+      if (auth) {
+        this.isLogged = true;
+      } else {
+        this.isLogged = false;
+      }
+    });
+  }
+  intento:boolean=false
+  boton(){
+    this.intento=true
   }
 }

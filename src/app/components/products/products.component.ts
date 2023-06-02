@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { productoInterface } from 'src/app/model/producto';
+import { AuthService } from 'src/app/services/auth.service';
 import { DataApiService } from 'src/app/services/data-api.service';
 
 @Component({
@@ -21,5 +22,6 @@ export class ProductsComponent implements OnInit{
         }
       }
     })
+
   }
 }

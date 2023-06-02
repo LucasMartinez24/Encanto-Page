@@ -9,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CarritoComponent implements OnInit{
   cart:CartItem[]=[]
+  precio:number=0;
   constructor(private cartService:CartService){
 
   }
@@ -19,13 +20,20 @@ export class CarritoComponent implements OnInit{
     this.cart=this.cartService.getItems()
     console.log(this.cart);
   }
-  control(){
-    const input = document.getElementById('myInput') as HTMLInputElement;
-
-    input.addEventListener('change', () => {
-      if (input.valueAsNumber < 1) {
-        input.valueAsNumber = 1;
-      }
-    });
+  updateTotalPrice(item: CartItem): void {
+    if(item.product.precio!=null){
+      this.precio = item.product.precio * item.quantity;
+    }
+  }
+  calculateSubtotal(): number {
+    let subtotal = 0;
+    for (let item of this.cart) {
+      subtotal += (item.product.precio || 0) * item.quantity;
+    }
+    return subtotal;
+  }
+  borrar(item:CartItem){
+    this.cartService.removeFromCart(item)
+    this.cart=this.cartService.getItems()
   }
 }
