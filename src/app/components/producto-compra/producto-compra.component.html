@@ -15,7 +15,9 @@
         <input class="label" type="number" [ngModel]="cantidad" min="1" [max]="aux" disabled>
         <span class="span" (click)="incrementarCantidad()">+</span>
       </div>
-      <button (click)="addCart()">Agregar al carrito</button>
+      <button *ngIf="isLogged" (click)="addCart()">Agregar al carrito</button>
+      <button *ngIf="isLogged==false" (click)="boton()">Agregar carrito</button>
+      <p *ngIf="intento">Inicia sesion para agregar a tu carrito y comprar</p>
     </div>
   </div>
 </section>
