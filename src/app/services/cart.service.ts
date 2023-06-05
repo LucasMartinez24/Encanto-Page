@@ -47,7 +47,7 @@ export class CartService {
     this.items = [];
     this.saveCart();
   }
-  private apiUrl = 'http://localhost:3000'; // Reemplaza con la URL de tu servidor Node.js
+  private apiUrl = 'https://encanto370.onrender.com'; // Reemplaza con la URL de tu servidor Node.js
 
   cargarCarritoEnPreferencia(precio:number) {
 
@@ -56,6 +56,6 @@ export class CartService {
       description: 'Accesorios Encanto370',
       price: precio,
     };
-    return this.http.post<any>('http://localhost:3000/crear-preferencia',orderData)
+    return this.http.post<any>(`${this.apiUrl}/crear-preferencia`,orderData)
   }
 }
