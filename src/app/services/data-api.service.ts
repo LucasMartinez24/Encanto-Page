@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { productoInterface } from '../model/producto';
-import { Firestore,collection,addDoc, collectionData,updateDoc} from '@angular/fire/firestore';
+import { Firestore,collection,addDoc, collectionData,updateDoc, getDoc} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { deleteDoc, doc} from 'firebase/firestore';
 @Injectable({
@@ -20,9 +20,21 @@ export class DataApiService {
     return addDoc(producRef, producto);
   }
 
-  getProducto(id: string): Observable<productoInterface[]> {
-    const productRefCollection = collection(this.firestore, 'productos');
-    return collectionData(productRefCollection) as Observable<productoInterface[]>;
+  getProducto(id:string): Observable<productoInterface> {
+    const productRef = doc(this.firestore, `productos/${id}`);
+    return new Observable<productoInterface>(observer => {
+      getDoc(productRef).then(docSnapshot => {
+        if (docSnapshot.exists()) {
+          observer.next(docSnapshot.data() as productoInterface);
+        } else {
+          observer.error(new Error('Producto no encontrado'));
+        }
+        observer.complete();
+      }).catch(error => {
+        observer.error(error);
+        observer.complete();
+      });
+    });
   }
 
   actualizarProducto(producto: productoInterface){

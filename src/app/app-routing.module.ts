@@ -7,6 +7,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormComponent } from './components/form/form.component';
 import { ListaProductosComponent } from './components/lista-productos/lista-productos.component';
+import { SuccessComponent } from './components/success/success.component';
 
 const routes: Routes = [
   {path:"inicio",component:HomeComponent},
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path:"carrito",component:CarritoComponent},
   {path:"login",component:LoginComponent},
   {path:"formulario/:id",component:FormComponent},
+  { path:'pago-exitoso', component: SuccessComponent },
+  { path:'pago-fallido', component: SuccessComponent },
   {path:"lista",component:ListaProductosComponent},
   {path:"**",redirectTo:"inicio"}
 ];

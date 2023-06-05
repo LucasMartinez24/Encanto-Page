@@ -28,9 +28,8 @@ export class ProductoCompraComponent implements OnInit {
     })
   }
   getProducto(id: string) {
-    this.data.getProducto(id).subscribe(resp => {
-      this.producto = resp[0]
-      this.producto.id = id
+    this.data.getProducto(id).subscribe(resp=>{
+      this.producto=resp
     })
   }
   cantidad: number = 1;

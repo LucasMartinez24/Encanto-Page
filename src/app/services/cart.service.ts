@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CartItem, productoInterface } from '../model/producto';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +10,7 @@ import { CartItem, productoInterface } from '../model/producto';
 export class CartService {
   items: CartItem[] = [];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     const cart = JSON.parse(localStorage.getItem('cartI') || '[]');
     this.items = cart;
   }
@@ -43,5 +46,16 @@ export class CartService {
   clearCart(): void {
     this.items = [];
     this.saveCart();
+  }
+  private apiUrl = 'http://localhost:3000'; // Reemplaza con la URL de tu servidor Node.js
+
+  cargarCarritoEnPreferencia(precio:number) {
+
+    const orderData = {
+      quantity: 1,
+      description: 'Accesorios Encanto370',
+      price: precio,
+    };
+    return this.http.post<any>('http://localhost:3000/crear-preferencia',orderData)
   }
 }

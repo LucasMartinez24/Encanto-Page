@@ -34,7 +34,7 @@ export class FormComponent implements OnInit{
   }
   getProducto(id:string){
    this.data.getProducto(id).subscribe(resp=>{
-    this.producto=resp[0]
+    this.producto=resp
     this.producto.id=id
    })
   }

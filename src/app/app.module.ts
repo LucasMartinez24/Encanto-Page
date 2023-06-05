@@ -22,7 +22,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { ListaProductosComponent } from './components/lista-productos/lista-productos.component'
+import { HttpClientModule } from '@angular/common/http';
+import { ListaProductosComponent } from './components/lista-productos/lista-productos.component';
+import { SuccessComponent } from './components/success/success.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,7 @@ import { ListaProductosComponent } from './components/lista-productos/lista-prod
     LoginComponent,
     FormComponent,
     ListaProductosComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { ListaProductosComponent } from './components/lista-productos/lista-prod
     provideAuth(() => getAuth()),
     AngularFireStorageModule,
     AngularFireAuthModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

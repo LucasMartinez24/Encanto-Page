@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartItem } from 'src/app/model/producto';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -10,7 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class CarritoComponent implements OnInit{
   cart:CartItem[]=[]
   precio:number=0;
-  constructor(private cartService:CartService){
+  constructor(private cartService:CartService,private router: Router){
 
   }
   ngOnInit(): void {
@@ -35,5 +36,13 @@ export class CarritoComponent implements OnInit{
   borrar(item:CartItem){
     this.cartService.removeFromCart(item)
     this.cart=this.cartService.getItems()
+  }
+  preferenceId: string="";
+  generatePreference(): void {
+    this.cartService.cargarCarritoEnPreferencia(this.calculateSubtotal()).subscribe(resp=>{
+          this.preferenceId = resp.id.init_point;
+          console.log(this.preferenceId);
+          window.location.href = this.preferenceId;
+    })
   }
 }
