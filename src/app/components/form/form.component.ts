@@ -68,6 +68,7 @@ export class FormComponent implements OnInit{
     });
     this.image=true
   }
+
   onSubmit() {
     this.urlImage.pipe(
       take(1),
@@ -80,7 +81,7 @@ export class FormComponent implements OnInit{
     });
   }
   modificar(){
-    this.data.actualizarProducto(this.producto).then(resp=>{
+    this.data.actualizarProducto(this.producto).subscribe(resp=>{
       console.log("actualizacion exitosa");
       this.router.navigate(['inicio']);
     })

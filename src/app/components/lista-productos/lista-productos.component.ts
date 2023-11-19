@@ -28,10 +28,12 @@ export class ListaProductosComponent implements OnInit{
   CloseModal(){
     this.modal=false
   }
-  borrarProducto(){
-    this.data.borrarProducto(this.prod).then(resp=>{
-      console.log("borrado con exito");
-      this.CloseModal()
-    })
+  borrarProducto() {
+    this.data.borrarProducto(this.prod).subscribe(
+      resp => {
+        console.log("Borrado con éxito");
+        this.CloseModal();
+      }
+    );
   }
 }

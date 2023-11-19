@@ -1,51 +1,39 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { productoInterface } from '../model/producto';
-import { Firestore,collection,addDoc, collectionData,updateDoc, getDoc} from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { deleteDoc, doc} from 'firebase/firestore';
+import { Observable, catchError, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DataApiService {
-  constructor(private firestore: Firestore) {
-  }
+  private apiUrl = 'http://localhost:3000/api'; // Cambia la URL según donde esté alojada tu API
+
+  constructor(private http: HttpClient) {}
 
   getTodosLosProductos(): Observable<productoInterface[]> {
-    const producRef = collection(this.firestore, 'productos');
-    return collectionData(producRef, { idField: 'id' }) as Observable<productoInterface[]>;
+    return this.http.get<productoInterface[]>(`${this.apiUrl}/productos`);
   }
 
-  agregarProducto(producto: productoInterface){
-    const producRef = collection(this.firestore, 'productos');
-    return addDoc(producRef, producto);
+  agregarProducto(producto: productoInterface): Observable<any> {
+    return this.http.post(`${this.apiUrl}/productos`, producto);
   }
 
-  getProducto(id:string): Observable<productoInterface> {
-    const productRef = doc(this.firestore, `productos/${id}`);
-    return new Observable<productoInterface>(observer => {
-      getDoc(productRef).then(docSnapshot => {
-        if (docSnapshot.exists()) {
-          observer.next(docSnapshot.data() as productoInterface);
-        } else {
-          observer.error(new Error('Producto no encontrado'));
-        }
-        observer.complete();
-      }).catch(error => {
-        observer.error(error);
-        observer.complete();
-      });
-    });
+  getProducto(id: string): Observable<productoInterface> {
+    return this.http.get<productoInterface>(`${this.apiUrl}/productos/${id}`)
+      .pipe(
+        catchError(error => {
+          console.error('Error al obtener el producto', error);
+          return throwError(error);
+        })
+      );
+  }
+  actualizarProducto(producto: productoInterface): Observable<any> {
+    const url = `${this.apiUrl}/productos/${producto.id}`;
+    return this.http.put(url, producto);
   }
 
-  actualizarProducto(producto: productoInterface){
-    const productRef = doc(this.firestore, `productos/${producto.id}`);
-    const productToUpdate = { ...producto };
-    delete productToUpdate.id; // Eliminamos la propiedad "id" para evitar conflictos en la actualización
-    return updateDoc(productRef, productToUpdate);
-  }
-
-  borrarProducto(producto: productoInterface){
-    const producRef = doc(this.firestore, `productos/${producto.id}`);
-    return deleteDoc(producRef);
+  borrarProducto(producto: productoInterface): Observable<any> {
+    const url = `${this.apiUrl}/productos/${producto.id}`;
+    return this.http.delete(url);
   }
 }
