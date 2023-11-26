@@ -37,12 +37,4 @@ export class CarritoComponent implements OnInit{
     this.cartService.removeFromCart(item)
     this.cart=this.cartService.getItems()
   }
-  preferenceId: string="";
-  generatePreference(): void {
-    this.cartService.cargarCarritoEnPreferencia(this.calculateSubtotal()).subscribe(resp=>{
-          this.preferenceId = resp.id.init_point;
-          console.log(this.preferenceId);
-          window.location.href = this.preferenceId;
-    })
-  }
 }
