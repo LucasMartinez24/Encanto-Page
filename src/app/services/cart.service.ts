@@ -47,15 +47,4 @@ export class CartService {
     this.items = [];
     this.saveCart();
   }
-  private apiUrl = 'http://localhost:3001'; // Reemplaza con la URL de tu servidor Node.js
-
-  cargarCarritoEnPreferencia(precio:number) {
-
-    const orderData = {
-      quantity: 1,
-      description: 'Accesorios Encanto370',
-      price: precio,
-    };
-    return this.http.post<any>('http://localhost:3001/crear-preferencia',orderData)
-  }
 }
